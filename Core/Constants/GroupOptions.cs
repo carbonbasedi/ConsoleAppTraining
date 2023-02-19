@@ -8,7 +8,7 @@ namespace Core.Constants
 {
     public enum GroupOptions
     {
-        Terminate,
+        MainMenu,
         AddGroup,
         UpdateGroup,
         RemoveGroup,

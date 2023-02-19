@@ -20,11 +20,10 @@ namespace Data.Repos.Actual
         {
             return DbContext.Groups.FirstOrDefault(q => q.Id == id);
         } 
-        public Group Get(string name)
+        public Group GetByName(string name)
         {
             return DbContext.Groups.FirstOrDefault(q => q.Name == name);
         }
-
         public void Add(Group group)
         {
             id++;
@@ -34,7 +33,15 @@ namespace Data.Repos.Actual
         }
         public void Update(Group group)
         {
-            throw new NotImplementedException();
+            var dbGroup = DbContext.Groups.FirstOrDefault(d => d.Id == group.Id);
+            if(dbGroup != null)
+            {
+                dbGroup.Name= group.Name;
+                dbGroup.MaxSize= group.MaxSize;
+                dbGroup.StartDate= group.StartDate;
+                dbGroup.EndDate= group.EndDate;
+                dbGroup.ModifiedAt= DateTime.Now;
+            }
         }
         public void Delete(Group group)
         {

@@ -11,7 +11,7 @@ namespace Data.Repos.Abstract
     {
         List<Group> GetAll();
         Group Get(int id);
-        Group Get(string id);
+        Group GetByName(string name);
         void Add(Group group);
         void Update(Group group);
         void Delete(Group group);
