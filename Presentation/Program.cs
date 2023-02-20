@@ -6,6 +6,7 @@ using Presentation.Services;
 using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Transactions;
 
 namespace Presentation
 {
@@ -22,7 +23,7 @@ namespace Presentation
         {
             while (true)
             {
-               MainMenuCheck: ConsoleHelper.WriteWithColor(" __        __   _                          \r\n \\ \\      / /__| | ___ ___  _ __ ___   ___ \r\n  \\ \\ /\\ / / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\\r\n   \\ V  V /  __/ | (_| (_) | | | | | |  __/\r\n    \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___|\r\n                                           ", ConsoleColor.Yellow);
+            MainMenuCheck: ConsoleHelper.WriteWithColor(" __          __  _                          \r\n \\ \\        / / | |                         \r\n  \\ \\  /\\  / /__| | ___ ___  _ __ ___   ___ \r\n   \\ \\/  \\/ / _ \\ |/ __/ _ \\| '_ ` _ \\ / _ \\\r\n    \\  /\\  /  __/ | (_| (_) | | | | | |  __/\r\n     \\/  \\/ \\___|_|\\___\\___/|_| |_| |_|\\___|\r\n                                            \r\n                                            ", ConsoleColor.Yellow);
                 ConsoleHelper.WriteWithColor("[1] Personnel", ConsoleColor.Cyan);
                 ConsoleHelper.WriteWithColor("[2] Students", ConsoleColor.Cyan);
                 ConsoleHelper.WriteWithColor("[3] Groups", ConsoleColor.Cyan);
@@ -63,11 +64,14 @@ namespace Presentation
                             }
                             else
                             {
+                                Console.Clear();
                                 break;
                             }
                         case (int)BaseOptions.Personnel:
+                            Console.Clear();
                             break;
                         case (int)BaseOptions.Students:
+                            Console.Clear();
                             break;
                         case (int)BaseOptions.Groups:
                             while (true)
@@ -75,7 +79,7 @@ namespace Presentation
                                 GroupRepos _groupRepos = new GroupRepos();
                                 Console.Clear();
 
-                                ConsoleHelper.WriteWithColor("", ConsoleColor.Yellow);
+                                ConsoleHelper.WriteWithColor("   _____                          ____        _   _                 \r\n  / ____|                        / __ \\      | | (_)                \r\n | |  __ _ __ ___  _   _ _ __   | |  | |_ __ | |_ _  ___  _ __  ___ \r\n | | |_ | '__/ _ \\| | | | '_ \\  | |  | | '_ \\| __| |/ _ \\| '_ \\/ __|\r\n | |__| | | | (_) | |_| | |_) | | |__| | |_) | |_| | (_) | | | \\__ \\\r\n  \\_____|_|  \\___/ \\__,_| .__/   \\____/| .__/ \\__|_|\\___/|_| |_|___/\r\n                        | |            | |                          \r\n                        |_|            |_|                          ", ConsoleColor.Yellow);
                                 ConsoleHelper.WriteWithColor("[1] Create New Group", ConsoleColor.Cyan);
                                 ConsoleHelper.WriteWithColor("[2] Update Group", ConsoleColor.Cyan);
                                 ConsoleHelper.WriteWithColor("[3] Delete Group", ConsoleColor.Cyan);
@@ -105,7 +109,6 @@ namespace Presentation
                                             else
                                             {
                                                 break;
-
                                             }
                                         case (int)GroupOptions.AddGroup:
                                             _groupService.Create();
@@ -141,8 +144,9 @@ namespace Presentation
                             break;
                     }
                 }
-
             }
+
+
         }
     }
 }
